@@ -220,11 +220,260 @@
       .team-grid { grid-template-columns: 1fr; }
       .box-header-flex { flex-direction: column-reverse; }
     }
-    @media (max-width: 768px) {
-      .bonsa-acronym { flex-direction: column; }
-      .bonsa-acronym::before { display: none; }
-      .acronym-item.central { transform: none; }
-      .acronym-item.central:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(158, 132, 70, 0.15); }
+    @media screen and (max-width: 768px) {
+      body {
+        zoom: 1;
+        overflow-x: hidden;
+      }
+      html {
+        overflow-x: hidden;
+      }
+      .bg-motifs {
+        display: none;
+      }
+      header {
+        padding: 25px 20px;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .logo {
+        min-height: auto;
+        min-width: auto;
+        justify-content: center;
+      }
+      .logo-icon {
+        margin-left: 0;
+        margin-top: 0;
+        transform: scale(2);
+        height: 35px;
+      }
+      nav {
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+        text-align: center;
+      }
+      .nav-link {
+        font-size: 20px;
+        padding-bottom: 4px;
+      }
+      .dropdown {
+        justify-content: center;
+        width: 100%;
+      }
+      .dropdown-toggle {
+        font-size: 19px;
+        margin: 0 auto;
+      }
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        max-width: 280px;
+        margin: 10px auto 0;
+        transform: none;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+        padding: 15px 20px;
+      }
+      .dropdown-item {
+        font-size: 16px;
+        padding: 12px 0;
+      }
+      .btn-support {
+        width: 100%;
+        max-width: 300px;
+        padding: 15px 24px;
+        font-size: 15px;
+        margin: 5px auto 0;
+      }
+      main {
+        padding: 0 20px;
+        margin: 30px auto 60px;
+      }
+      .section-title {
+        font-size: 34px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+      }
+      .section-subtitle {
+        font-size: 14px;
+        letter-spacing: 2px;
+      }
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-top: 30px;
+        margin-bottom: 50px;
+      }
+      .team-header {
+        padding: 30px 15px 20px;
+      }
+      .avatar {
+        width: 110px;
+        height: 110px;
+      }
+      .member-name {
+        font-size: 26px;
+      }
+      .team-body {
+        padding: 20px 15px;
+      }
+      .team-body p {
+        font-size: 15px;
+        text-align: left;
+      }
+      .content-box {
+        padding: 25px 18px;
+        margin-bottom: 30px;
+      }
+      .content-box::after {
+        display: none;
+      }
+      .box-header-flex {
+        flex-direction: column-reverse;
+        gap: 15px;
+      }
+      .box-title {
+        font-size: 26px;
+        line-height: 1.25;
+      }
+      .box-subtitle {
+        font-size: 16px;
+        margin-bottom: 18px;
+      }
+      .box-text {
+        font-size: 16px;
+        line-height: 1.65;
+        margin-bottom: 20px;
+      }
+      .mkrsi-logo-img {
+        width: 130px;
+      }
+      .bonsa-acronym {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 30px;
+      }
+      .bonsa-acronym::before {
+        display: none;
+      }
+      .acronym-item {
+        padding: 25px 15px;
+      }
+      .acronym-item.central {
+        transform: none;
+        padding: 30px 15px;
+      }
+      .acronym-item.central:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(158, 132, 70, 0.15);
+      }
+      .acronym-letter {
+        font-size: 42px;
+      }
+      .acronym-item.central .acronym-letter {
+        font-size: 48px;
+      }
+      .timeline {
+        padding-left: 45px;
+        margin-top: 40px;
+      }
+      .timeline::before {
+        left: 14px;
+      }
+      .timeline-year {
+        left: -45px;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+      }
+      .timeline-content {
+        padding: 20px 15px;
+      }
+      .tl-header {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .tl-title {
+        font-size: 20px;
+        max-width: 100%;
+      }
+      .tl-text {
+        font-size: 15px;
+      }
+      .cta-module {
+        padding: 35px 20px;
+        margin-top: 50px;
+      }
+      .cta-title {
+        font-size: 28px;
+        line-height: 1.25;
+      }
+      .cta-text {
+        font-size: 16px;
+        margin-bottom: 25px;
+      }
+      .cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+      }
+      .btn-solid {
+        width: 100%;
+        text-align: center;
+        padding: 15px 20px;
+        font-size: 14px;
+        justify-content: center;
+      }
+      .modal-card {
+        width: 94%;
+        max-width: 94%;
+        margin: 10px auto;
+      }
+      .modal-body {
+        padding: 30px 15px;
+      }
+      .modal-title {
+        font-size: 24px;
+        line-height: 1.2;
+        margin-bottom: 12px;
+      }
+      .modal-subtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+      .transfer-box {
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+      .transfer-label {
+        font-size: 11px;
+      }
+      .transfer-value {
+        font-size: 14px;
+      }
+      .transfer-value-group {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+      }
+      .account-number {
+        font-size: 13px;
+        word-break: break-all;
+        text-align: center;
+      }
+      .btn-copy {
+        width: 100%;
+        text-align: center;
+      }
+      .btn-download {
+        font-size: 13px;
+        padding: 12px;
+      }
+      .copyright-footer {
+        padding: 30px 15px;
+        font-size: 13px;
+      }
     }
   </style>
 </head>
