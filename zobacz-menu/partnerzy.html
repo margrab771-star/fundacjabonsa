@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partnerzy i Zaufanie – Fundacja BONSA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #faf7f0;
+      --text-dark: #032c1e;
+      --text-muted: #4a5550;
+      --gold-primary: #9e8446;
+      --gold-hover: #876f36;
+      --green-dark: #032c1e;
+      --green-hover: #1b3f28;
+      --border-light: #e2ddd2;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      zoom: 0.9;
+    }
+
+    body {
+      zoom: 0.9;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Animowane tło */
+    .bg-motifs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; opacity: 0.7; }
+    .motif { position: absolute; border: 1.5px solid rgba(158, 132, 70, 0.16); transform-origin: center; }
+    .motif-1 { width: 588px; height: 588px; top: 12%; right: 6%; animation: rotateSlow 38s linear infinite; }
+    .motif-2 { width: 504px; height: 504px; top: 18%; right: 10%; border-color: rgba(3, 44, 30, 0.09); animation: rotateReverse 45s linear infinite; }
+    .motif-3 { width: 364px; height: 364px; top: 8%; left: -84px; border-radius: 34px; animation: floatRotate 28s ease-in-out infinite; }
+    .motif-4 { width: 700px; height: 700px; bottom: -252px; left: 18%; border-radius: 50%; border-style: dashed; border-color: rgba(158, 132, 70, 0.14); animation: rotateSlow 60s linear infinite; }
+
+    @keyframes rotateSlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes rotateReverse { 0% { transform: rotate(360deg) scale(1); } 50% { transform: rotate(180deg) scale(1.05); } 100% { transform: rotate(0deg) scale(1); } }
+    @keyframes floatRotate { 0%, 100% { transform: translateY(0) rotate(12deg); } 50% { transform: translateY(49px) rotate(42deg); } }
+
+    /* NAWIGACJA */
+    header {
+      position: relative; z-index: 20; max-width: 1848px; margin: 0 auto;
+      padding: 39px 67px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; text-decoration: none; transition: transform 0.3s ease; min-height: 70px; min-width: 150px; }
+    .logo:hover { transform: scale(1.03); }
+    .logo-icon { height: 45px; width: auto; display: block; margin-top: 25px; margin-left: 120px; transform: scale(3.5); transform-origin: left center; }
+    
+    nav { display: flex; align-items: center; gap: 50px; }
+    .nav-link { font-family: 'Playfair Display', serif; font-size: 23px; color: var(--text-dark); text-decoration: none; border-bottom: 2px solid transparent; padding-bottom: 7px; transition: color 0.2s ease, border-color 0.2s ease; }
+    .nav-link:hover, .nav-link.active { color: var(--gold-primary); border-bottom: 2px solid var(--gold-primary); }
+    
+    .dropdown { position: relative; display: flex; align-items: center; }
+    .dropdown-toggle {
+      background: none; border: none; border-bottom: 2px solid var(--gold-primary); color: var(--gold-primary);
+      padding-bottom: 7px; font-family: 'Playfair Display', serif; font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; gap: 11px; transition: border-color 0.2s ease, color 0.2s ease; margin-bottom: 0; margin-top: 4px;
+    }
+    .dropdown-toggle svg { transition: transform 0.3s ease; transform: rotate(180deg); }
+    
+    .dropdown-menu {
+      position: absolute; top: calc(100% + 20px); left: -35px; width: 294px; background: #ffffff;
+      box-shadow: 0 21px 49px rgba(0, 0, 0, 0.08); border-radius: 4px; padding: 20px 31px;
+      opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.25s ease;
+    }
+    .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    
+    .dropdown-item { display: flex; align-items: center; justify-content: space-between; padding: 15px 0; font-size: 19px; color: var(--text-dark); text-decoration: none; border-bottom: 1.5px solid #f3f1ec; transition: color 0.2s, padding-left 0.2s; }
+    .dropdown-item:last-child { border-bottom: none; }
+    .dropdown-item:hover, .dropdown-item.active { color: var(--gold-primary); padding-left: 6px; }
+    .dropdown-item span { color: #b5ad9e; font-size: 17px; }
+
+    .btn-support { background-color: var(--gold-primary); color: #ffffff; border: none; padding: 21px 39px; font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 600; letter-spacing: 2.1px; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: all 0.25s ease; }
+    .btn-support:hover { background-color: var(--gold-hover); transform: translateY(-3px); box-shadow: 0 11px 28px rgba(158, 132, 70, 0.3); }
+
+    /* =======================================
+       GŁÓWNA SEKCJA: PARTNERZY
+       ======================================= */
+    main { position: relative; z-index: 10; max-width: 1400px; margin: 40px auto 100px; padding: 0 40px; }
+
+    .section-header { text-align: center; margin-bottom: 70px; }
+    .section-subtitle { font-size: 16px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-primary); margin-bottom: 15px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 700; color: var(--text-dark); margin-bottom: 25px; line-height: 1.2; }
+    .intro-text { font-size: 21px; line-height: 1.7; color: var(--text-muted); max-width: 900px; margin: 0 auto; }
+
+    /* Siatka Partnerów */
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      margin-bottom: 100px;
+    }
+
+    .partner-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(3, 44, 30, 0.03);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold-primary);
+      box-shadow: 0 20px 40px rgba(158, 132, 70, 0.1);
+    }
+
+    .partner-logo-container {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .partner-logo-img {
+      max-width: 200px;
+      max-height: 100px;
+      object-fit: contain;
+      /* Usunięto filtry zmieniające kolory na szare */
+      transition: transform 0.3s ease;
+    }
+
+    .partner-card:hover .partner-logo-img {
+      transform: scale(1.05);
+    }
+
+    .partner-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 15px;
+    }
+
+    .partner-desc {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      flex-grow: 1;
+    }
+
+    .btn-partner-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-light);
+      padding: 12px 25px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+    }
+
+    .btn-partner-link:hover {
+      background: #e8e3d8;
+      color: var(--gold-primary);
+      border-color: var(--gold-primary);
+    }
+
+    /* Sekcja Podziękowań - Twórcy Wizerunku */
+    .thanks-section {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 60px;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.03);
+    }
+
+    .thanks-content {
+      flex: 1;
+    }
+
+    .thanks-badge {
+      display: inline-block;
+      background: rgba(158, 132, 70, 0.1);
+      color: var(--gold-primary);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .thanks-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .thanks-text {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 25px;
+    }
+
+    .thanks-visual {
+      flex: 0.8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--bg-color);
+      padding: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border-light);
+    }
+
+    .gd-logo-circle {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #1f2a4b, #973a88);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      font-size: 48px;
+      font-weight: 300;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 20px rgba(31, 42, 75, 0.2);
+    }
+
+    .gd-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    
+    .gd-role {
+      font-size: 14px;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
+    .btn-portfolio {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      border: 1.5px solid var(--gold-primary);
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--gold-primary);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-portfolio:hover {
+      background: var(--gold-primary);
+      color: #ffffff;
+    }
+
+    /* CTA */
+    .cta-module { background: var(--green-dark); border-radius: 12px; padding: 60px; text-align: center; color: #ffffff; margin-top: 100px; }
+    .cta-title { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; margin-bottom: 20px; color: #ffffff; }
+    .cta-text { font-size: 19px; line-height: 1.6; color: #d1d8d4; max-width: 800px; margin: 0 auto 40px; }
+    .cta-buttons { display: flex; justify-content: center; gap: 20px; }
+    .btn-solid { background: var(--gold-primary); color: #ffffff; padding: 18px 35px; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; text-decoration: none; transition: background 0.2s; }
+    .btn-solid:hover { background: var(--gold-hover); }
+
+    .copyright-footer { position: relative; z-index: 10; text-align: center; padding: 40px 20px; font-size: 15px; color: #7b8580; border-top: 1px solid var(--border-light); max-width: 1708px; margin: 0 auto; }
+
+    /* Responsywność */
+    @media (max-width: 1024px) {
+      .partners-grid { grid-template-columns: 1fr; }
+      .thanks-section { flex-direction: column; text-align: center; padding: 40px; }
+      .thanks-visual { width: 100%; }
+    }
+
+    /* MODAL CSS */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(3, 44, 30, 0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; backdrop-filter: blur(4px); }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal-card { background: #ffffff; width: 100%; max-width: 600px; border-radius: 12px; overflow: hidden; position: relative; transform: translateY(20px); transition: transform 0.3s ease; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+    .modal-overlay.active .modal-card { transform: translateY(0); }
+    .modal-top-bar { height: 6px; background: var(--gold-primary); width: 100%; }
+    .modal-close { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 28px; color: #a0aab2; cursor: pointer; transition: color 0.2s; }
+    .modal-close:hover { color: var(--text-dark); }
+    .modal-body { padding: 40px; text-align: center; }
+    .modal-badge { display: inline-block; background: #fdfdfc; border: 1px solid var(--border-light); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold-primary); margin-bottom: 20px; }
+    .modal-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--text-dark); margin-bottom: 15px; line-height: 1.2; }
+    .modal-subtitle { font-size: 16px; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6; }
+    .transfer-box { background: #fafafa; border: 1px solid var(--border-light); border-radius: 8px; padding: 25px; text-align: left; margin-bottom: 30px; }
+    .transfer-row { display: flex; flex-direction: column; margin-bottom: 15px; }
+    .transfer-row:last-child { margin-bottom: 0; }
+    .transfer-label { font-size: 13px; color: #7b8580; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; margin-bottom: 5px; }
+    .transfer-value { font-size: 16px; color: var(--text-dark); font-weight: 500; }
+    .transfer-value-group { display: flex; justify-content: space-between; align-items: center; background: #ffffff; border: 1px solid #e2ddd2; padding: 10px 15px; border-radius: 6px; }
+    .account-number { font-family: 'JetBrains Mono', monospace; font-size: 17px; font-weight: 600; color: var(--text-dark); letter-spacing: 0.5px; -webkit-user-select: all; -moz-user-select: all; -ms-user-select: all; user-select: all; }
+    .btn-copy { background: var(--bg-color); border: 1px solid var(--border-light); padding: 6px 12px; border-radius: 4px; font-size: 13px; font-weight: 600; color: var(--text-dark); cursor: pointer; transition: all 0.2s; }
+    .btn-copy:hover { background: #e8e3d8; }
+    .btn-copy.copied { background: var(--green-dark); color: #ffffff; border-color: var(--green-dark); }
+    .btn-download { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; background: #ffffff; border: 1.5px solid var(--gold-primary); padding: 16px; border-radius: 6px; font-size: 15px; font-weight: 600; color: var(--gold-primary); cursor: pointer; transition: all 0.2s; }
+    .btn-download:hover { background: var(--gold-primary); color: #ffffff; }
+    .btn-download svg { width: 20px; height: 20px; }
+  </style>
+</head>
+<body>
+
+  <div class="bg-motifs">
+    <div class="motif motif-1"></div>
+    <div class="motif motif-2"></div>
+    <div class="motif motif-3"></div>
+    <div class="motif motif-4"></div>
+  </div>
+
+  <header>
+    <a href="../index.html" class="logo">
+      <img src="../images/logo.svg" alt="Logo Fundacji BONSA" class="logo-icon">
+    </a>
+
+    <nav>
+      <a href="../o-nas.html" class="nav-link">O nas</a>
+      <a href="../aktualnosci.html" class="nav-link">Aktualności</a>
+      <a href="../kontakt.html" class="nav-link">Kontakt</a>
+
+      <div class="dropdown" id="menuDropdown">
+        <button class="dropdown-toggle" id="dropdownBtn">
+          ZOBACZ MENU
+          <svg width="14" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="informacje.html" class="dropdown-item">Informacje <span>→</span></a>
+          <a href="misja.html" class="dropdown-item">Misja i Statut <span>→</span></a>
+          <a href="partnerzy.html" class="dropdown-item active">Partnerzy <span>→</span></a>
+          <a href="patronaty.html" class="dropdown-item">Patronaty <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Bezpośrednie dodanie akcji otwierania modala -->
+      <button class="btn-support" onclick="document.getElementById('supportModal').classList.add('active')">WESPRZYJ NAS</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="section-header">
+      <div class="section-subtitle">Sieć relacji i wsparcia</div>
+      <h1 class="section-title">Zaufali nam najlepsi.</h1>
+      <p class="intro-text">
+        Budowa silnego społeczeństwa obywatelskiego wymaga współpracy. Jesteśmy dumni, że możemy współdziałać z liderami w dziedzinie edukacji, kultury i wsparcia lokalnych inicjatyw.
+      </p>
+    </div>
+
+    <!-- SIATKA PARTNERÓW -->
+    <div class="partners-grid">
+      
+      <!-- FRES -->
+      <div class="partner-card">
+        <div class="partner-logo-container">
+          <img src="../images/logoFRES.webp" alt="Logo Fundacji Rozwoju Ekonomii Społecznej (FRES)" class="partner-logo-img">
+        </div>
+        <h3 class="partner-title">FRES</h3>
+        <p class="partner-desc">
+          Współpraca w zakresie doradztwa, wsparcia organizacyjnego oraz budowy innowacyjnych projektów wzmacniających kapitał społeczny na terenie Śląska.
+        </p>
+        <a href="https://www.fres.org.pl/" target="_blank" class="btn-partner-link">Odwiedź stronę ↗</a>
+      </div>
+
+      <!-- FEIO -->
+      <div class="partner-card">
+        <div class="partner-logo-container">
+          <img src="../images/partner-feio.png" alt="Logo Fundacji Europejski Instytut Outsourcingu (FEIO)" class="partner-logo-img">
+        </div>
+        <h3 class="partner-title">Fundacja EIO</h3>
+        <p class="partner-desc">
+          Partner strategiczny w organizacji warsztatów edukacyjnych (w tym m.in. projekt „Lider w akcji”), wspierający rozwój kluczowych kompetencji miękkich u tyskiej młodzieży.
+        </p>
+        <a href="https://feio.pl/" target="_blank" class="btn-partner-link">Odwiedź stronę ↗</a>
+      </div>
+
+      <!-- Miejska Biblioteka Publiczna -->
+      <div class="partner-card">
+        <div class="partner-logo-container">
+          <img src="../images/partner-mbp.png" alt="Logo Miejskiej Biblioteki Publicznej w Tychach" class="partner-logo-img">
+        </div>
+        <h3 class="partner-title">MBP Tychy</h3>
+        <p class="partner-desc">
+          Wieloletni mecenas naszych inicjatyw i instytucja oferująca zaplecze infrastrukturalne (Mediateka) dla cyklicznych spotkań, warsztatów i paneli dyskusyjnych.
+        </p>
+        <a href="https://mbp.tychy.pl/" target="_blank" class="btn-partner-link">Odwiedź stronę ↗</a>
+      </div>
+
+      <!-- Młodzieżowa Rada Miasta -->
+      <div class="partner-card">
+        <div class="partner-logo-container">
+          <img src="../images/partner-mrm.png" alt="Logo Młodzieżowej Rady Miasta Tychy" class="partner-logo-img">
+        </div>
+        <h3 class="partner-title">MRM Tychy</h3>
+        <p class="partner-desc">
+          Stały patronat i wsparcie organizacyjne przy kluczowych miejskich wydarzeniach dla licealistów, w tym przy kolejnych edycjach Tyskiego Turnieju Debat Oksfordzkich.
+        </p>
+        <a href="https://mrm.tychy.pl/" target="_blank" class="btn-partner-link">Odwiedź stronę ↗</a>
+      </div>
+
+    </div>
+
+    <!-- SEKCJA SPECJALNYCH PODZIĘKOWAŃ (Przemysław Mańczak) -->
+    <div class="thanks-section">
+      <div class="thanks-content">
+        <span class="thanks-badge">Specjalne Podziękowania</span>
+        <h2 class="thanks-title">Twórca naszego wizerunku</h2>
+        <p class="thanks-text">
+          Za profesjonalną identyfikacją wizualną Fundacji BONSA stoi <strong>Przemysław Mańczak</strong> (Good Design). To właśnie on, opierając się na ponad 14-letnim doświadczeniu w branży grafiki reklamowej i projektowania stron www, stworzył dla nas oficjalne logo, które idealnie oddaje powagę, misję oraz wartości edukacyjne naszej instytucji.
+        </p>
+        <p class="thanks-text" style="margin-bottom: 0;">
+          Dziękujemy za niezwykły profesjonalizm, dbałość o najdrobniejsze detale typograficzne i ogromne wsparcie na wczesnym etapie budowania tożsamości wizualnej Fundacji.
+        </p>
+      </div>
+      
+      <div class="thanks-visual">
+        <div class="gd-logo-circle">PM</div>
+        <div class="gd-name">Przemysław Mańczak</div>
+        <div class="gd-role">Projektant Graficzny</div>
+        <a href="https://www.facebook.com/hello.gooddesign11/" target="_blank" class="btn-portfolio">
+          Zobacz Portfolio ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-module">
+      <h2 class="cta-title">Chcesz zostać naszym Partnerem?</h2>
+      <p class="cta-text">
+        Stale poszukujemy przedsiębiorstw, instytucji kultury oraz firm, które chcą dołożyć swoją cegiełkę do rozwoju lokalnej edukacji obywatelskiej.
+      </p>
+      <div class="cta-buttons">
+        <a href="../kontakt.html" class="btn-solid">Nawiąż współpracę</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="copyright-footer">
+    &copy; 2026 Fundacja BONSA. Wszelkie prawa zastrzeżone.
+  </footer>
+
+  <!-- MODAL WESPRZYJ NAS -->
+  <div class="modal-overlay" id="supportModal">
+    <div class="modal-card">
+      <div class="modal-top-bar"></div>
+      <button class="modal-close" id="closeModalBtn" aria-label="Zamknij" onclick="document.getElementById('supportModal').classList.remove('active')">&times;</button>
+
+      <div class="modal-body">
+        <div class="modal-badge">MECENAT SPOŁECZNY</div>
+        <h2 class="modal-title">Wesprzyj działania Fundacji<br>BONSA</h2>
+        <p class="modal-subtitle">100% środków przekazanych z darowizn jest przeznaczanych na cele statutowe.</p>
+
+        <div class="transfer-box">
+          <div class="transfer-row">
+            <span class="transfer-label">Bank:</span>
+            <span class="transfer-value">Nest Bank S.A.</span>
+          </div>
+          <div class="transfer-row">
+            <span class="transfer-label">Nr konta:</span>
+            <div class="transfer-value-group">
+              <span class="account-number" id="accountNumber">32 2530 0008 2100 1091 9874 0001</span>
+              <button class="btn-copy" id="copyAccountBtn">Kopiuj</button>
+            </div>
+          </div>
+          <div class="transfer-row">
+            <span class="transfer-label">Odbiorca:</span>
+            <span class="transfer-value" id="recipientName">Fundacja Bonsa, al. Bielska 128, 43-100 Tychy</span>
+          </div>
+          <div class="transfer-row">
+            <span class="transfer-label">Tytuł:</span>
+            <span class="transfer-value" id="transferTitle">Darowizna na cele statutowe</span>
+          </div>
+        </div>
+
+        <button class="btn-download" id="downloadDataBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3V16M12 16L7 11M12 16L17 11" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          POBIERZ DANE DO PRZELEWU
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Menu Dropdown
+    const dropdown = document.getElementById('menuDropdown');
+    const dropdownBtn = document.getElementById('dropdownBtn');
+
+    dropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+
+    // Zamknięcie modala (otwieranie jest wprost w HTML buttonie)
+    const supportModal = document.getElementById('supportModal');
+    supportModal.addEventListener('click', (e) => { if (e.target === supportModal) supportModal.classList.remove('active'); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') supportModal.classList.remove('active'); });
+
+    // Kopiowanie konta
+    const copyAccountBtn = document.getElementById('copyAccountBtn');
+    const cleanAccountNumber = "32253000082100109198740001";
+
+    copyAccountBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(cleanAccountNumber);
+        copyAccountBtn.textContent = 'Skopiowano!';
+        copyAccountBtn.classList.add('copied');
+        setTimeout(() => {
+          copyAccountBtn.textContent = 'Kopiuj';
+          copyAccountBtn.classList.remove('copied');
+        }, 2200);
+      } catch (err) {
+        const tempInput = document.createElement('input');
+        tempInput.value = cleanAccountNumber;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        copyAccountBtn.textContent = 'Skopiowano!';
+        copyAccountBtn.classList.add('copied');
+        setTimeout(() => {
+          copyAccountBtn.textContent = 'Kopiuj';
+          copyAccountBtn.classList.remove('copied');
+        }, 2200);
+      }
+    });
+
+    // Pobieranie TXT
+    const downloadDataBtn = document.getElementById('downloadDataBtn');
+    downloadDataBtn.addEventListener('click', () => {
+      const content = [
+        '==================================================',
+        '   DANE DO PRZELEWU - FUNDACJA BONSA',
+        '==================================================',
+        '',
+        'Bank:      Nest Bank S.A.',
+        'Nr konta:  32 2530 0008 2100 1091 9874 0001',
+        'Odbiorca:  Fundacja Bonsa, al. Bielska 128, 43-100 Tychy',
+        'Tytuł:     Darowizna na cele statutowe',
+        '',
+        '--------------------------------------------------',
+        '100% środków przekazanych z darowizn jest',
+        'przeznaczanych na cele statutowe.',
+        'Dziękujemy za Twoje wsparcie!'
+      ].join('\r\n');
+
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'dane-do-przelewu-fundacja-bonsa.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>

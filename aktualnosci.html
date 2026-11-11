@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aktualności - Fundacja BONSA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #faf7f0;
+      --text-dark: #032c1e;
+      --text-muted: #4a5550;
+      --gold-primary: #9e8446;
+      --gold-hover: #876f36;
+      --green-dark: #032c1e;
+      --green-hover: #1b3f28;
+      --border-light: #e2ddd2;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      zoom: 0.9;
+    }
+
+    body {
+      zoom: 0.9;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Animowane tło */
+    .bg-motifs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; opacity: 0.7; }
+    .motif { position: absolute; border: 1.5px solid rgba(158, 132, 70, 0.16); transform-origin: center; }
+    .motif-1 { width: 588px; height: 588px; top: 12%; right: 6%; animation: rotateSlow 38s linear infinite; }
+    .motif-2 { width: 504px; height: 504px; top: 18%; right: 10%; border-color: rgba(3, 44, 30, 0.09); animation: rotateReverse 45s linear infinite; }
+    .motif-3 { width: 364px; height: 364px; top: 8%; left: -84px; border-radius: 34px; animation: floatRotate 28s ease-in-out infinite; }
+    .motif-4 { width: 700px; height: 700px; bottom: -252px; left: 18%; border-radius: 50%; border-style: dashed; border-color: rgba(158, 132, 70, 0.14); animation: rotateSlow 60s linear infinite; }
+
+    @keyframes rotateSlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes rotateReverse { 0% { transform: rotate(360deg) scale(1); } 50% { transform: rotate(180deg) scale(1.05); } 100% { transform: rotate(0deg) scale(1); } }
+    @keyframes floatRotate { 0%, 100% { transform: translateY(0) rotate(12deg); } 50% { transform: translateY(49px) rotate(42deg); } }
+
+    /* NAWIGACJA */
+    header {
+      position: relative; z-index: 20; max-width: 1848px; margin: 0 auto;
+      padding: 39px 67px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; text-decoration: none; transition: transform 0.3s ease; min-height: 70px; min-width: 150px; }
+    .logo:hover { transform: scale(1.03); }
+    .logo-icon { height: 45px; width: auto; display: block; margin-top: 25px; margin-left: 120px; transform: scale(3.5); transform-origin: left center; }
+    
+    nav { display: flex; align-items: center; gap: 50px; }
+    .nav-link { font-family: 'Playfair Display', serif; font-size: 23px; color: var(--text-dark); text-decoration: none; border-bottom: 2px solid transparent; padding-bottom: 7px; transition: color 0.2s ease, border-color 0.2s ease; }
+    .nav-link:hover, .nav-link.active { color: var(--gold-primary); border-bottom: 2px solid var(--gold-primary); }
+    
+    .dropdown { position: relative; display: flex; align-items: center; }
+    .dropdown-toggle {
+      background: none; border: none; border-bottom: 2px solid transparent; color: var(--text-dark);
+      padding-bottom: 7px; font-family: 'Playfair Display', serif; font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; gap: 11px; transition: border-color 0.2s ease, color 0.2s ease; margin-bottom: 0; margin-top: 4px;
+    }
+    .dropdown-toggle svg { transition: transform 0.3s ease; }
+    .dropdown:hover .dropdown-toggle, .dropdown.open .dropdown-toggle { border-bottom: 2px solid var(--gold-primary); color: var(--gold-primary); }
+    .dropdown:hover .dropdown-toggle svg, .dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
+    
+    .dropdown-menu {
+      position: absolute; top: calc(100% + 20px); left: -35px; width: 294px; background: #ffffff;
+      box-shadow: 0 21px 49px rgba(0, 0, 0, 0.08); border-radius: 4px; padding: 20px 31px;
+      opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.25s ease;
+    }
+    .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    
+    .dropdown-item { display: flex; align-items: center; justify-content: space-between; padding: 15px 0; font-size: 19px; color: var(--text-dark); text-decoration: none; border-bottom: 1.5px solid #f3f1ec; transition: color 0.2s, padding-left 0.2s; }
+    .dropdown-item:last-child { border-bottom: none; }
+    .dropdown-item:hover { color: var(--gold-primary); padding-left: 6px; }
+    .dropdown-item span { color: #b5ad9e; font-size: 17px; }
+
+    .btn-support { background-color: var(--gold-primary); color: #ffffff; border: none; padding: 21px 39px; font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 600; letter-spacing: 2.1px; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: all 0.25s ease; }
+    .btn-support:hover { background-color: var(--gold-hover); transform: translateY(-3px); box-shadow: 0 11px 28px rgba(158, 132, 70, 0.3); }
+
+    /* =======================================
+       SEKCJA AKTUALNOŚCI (Czysty układ bez podwójnych ramek)
+       ======================================= */
+    main { position: relative; z-index: 10; max-width: 1400px; margin: 40px auto 100px; padding: 0 40px; }
+
+    .section-header { text-align: center; margin-bottom: 80px; }
+    .section-subtitle { font-size: 16px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-primary); margin-bottom: 15px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 700; color: var(--text-dark); margin-bottom: 25px; line-height: 1.2; }
+    .intro-text { font-size: 21px; line-height: 1.7; color: var(--text-muted); max-width: 800px; margin: 0 auto; }
+
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    .news-article {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      align-items: center;
+      gap: 50px;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 45px; 
+      box-shadow: 0 15px 35px rgba(3, 44, 30, 0.04);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .news-article:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-primary);
+    }
+
+    /* Naprzemienny układ: w drugim artykule tekst po lewej, zdjęcie po prawej */
+    .news-article:nth-child(even) {
+      grid-template-columns: 1.15fr 1fr;
+    }
+
+    .news-article:nth-child(even) .news-image-wrapper {
+      order: 2;
+    }
+
+    .news-article:nth-child(even) .news-content {
+      order: 1;
+    }
+
+    .news-image-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      aspect-ratio: 4/3;
+      width: 100%;
+      background-color: #f3f1ec;
+    }
+
+    .news-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .news-article:hover .news-img {
+      transform: scale(1.03);
+    }
+
+    .news-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .news-date {
+      display: inline-block;
+      background: rgba(158, 132, 70, 0.12);
+      color: var(--gold-primary);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .news-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+
+    .news-text {
+      font-size: 16.5px;
+      line-height: 1.75;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .news-text:last-child {
+      margin-bottom: 0;
+    }
+
+    /* CTA */
+    .cta-module { background: var(--green-dark); border-radius: 12px; padding: 60px; text-align: center; color: #ffffff; margin-top: 80px; }
+    .cta-title { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; margin-bottom: 20px; color: #ffffff; }
+    .cta-text { font-size: 19px; line-height: 1.6; color: #d1d8d4; max-width: 800px; margin: 0 auto 40px; }
+    .cta-buttons { display: flex; justify-content: center; gap: 20px; }
+    .btn-solid { background: var(--gold-primary); color: #ffffff; padding: 18px 35px; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; text-decoration: none; transition: background 0.2s; }
+    .btn-solid:hover { background: var(--gold-hover); }
+
+    .copyright-footer { position: relative; z-index: 10; text-align: center; padding: 40px 20px; font-size: 15px; color: #7b8580; border-top: 1px solid var(--border-light); max-width: 1708px; margin: 0 auto; }
+
+    /* Modal CSS */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(3, 44, 30, 0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; backdrop-filter: blur(4px); }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal-card { background: #ffffff; width: 100%; max-width: 600px; border-radius: 12px; overflow: hidden; position: relative; transform: translateY(20px); transition: transform 0.3s ease; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+    .modal-overlay.active .modal-card { transform: translateY(0); }
+    .modal-top-bar { height: 6px; background: var(--gold-primary); width: 100%; }
+    .modal-close { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 28px; color: #a0aab2; cursor: pointer; transition: color 0.2s; }
+    .modal-close:hover { color: var(--text-dark); }
+    .modal-body { padding: 40px; text-align: center; }
+    .modal-badge { display: inline-block; background: #fdfdfc; border: 1px solid var(--border-light); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold-primary); margin-bottom: 20px; }
+    .modal-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--text-dark); margin-bottom: 15px; line-height: 1.2; }
+    .modal-subtitle { font-size: 16px; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6; }
+    .transfer-box { background: #fafafa; border: 1px solid var(--border-light); border-radius: 8px; padding: 25px; text-align: left; margin-bottom: 30px; }
+    .transfer-row { display: flex; flex-direction: column; margin-bottom: 15px; }
+    .transfer-row:last-child { margin-bottom: 0; }
+    .transfer-label { font-size: 13px; color: #7b8580; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; margin-bottom: 5px; }
+    .transfer-value { font-size: 16px; color: var(--text-dark); font-weight: 500; }
+    .transfer-value-group { display: flex; justify-content: space-between; align-items: center; background: #ffffff; border: 1px solid #e2ddd2; padding: 10px 15px; border-radius: 6px; }
+    .account-number { font-family: 'JetBrains Mono', monospace; font-size: 17px; font-weight: 600; color: var(--text-dark); letter-spacing: 0.5px; -webkit-user-select: all; -moz-user-select: all; -ms-user-select: all; user-select: all; }
+    .btn-copy { background: var(--bg-color); border: 1px solid var(--border-light); padding: 6px 12px; border-radius: 4px; font-size: 13px; font-weight: 600; color: var(--text-dark); cursor: pointer; transition: all 0.2s; }
+    .btn-copy:hover { background: #e8e3d8; }
+    .btn-copy.copied { background: var(--green-dark); color: #ffffff; border-color: var(--green-dark); }
+    .btn-download { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; background: #ffffff; border: 1.5px solid var(--gold-primary); padding: 16px; border-radius: 6px; font-size: 15px; font-weight: 600; color: var(--gold-primary); cursor: pointer; transition: all 0.2s; }
+    .btn-download:hover { background: var(--gold-primary); color: #ffffff; }
+    .btn-download svg { width: 20px; height: 20px; }
+
+    /* Responsywność */
+    @media (max-width: 1024px) {
+      .news-article, .news-article:nth-child(even) {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px;
+      }
+      .news-article:nth-child(even) .news-image-wrapper {
+        order: 1;
+      }
+      .news-article:nth-child(even) .news-content {
+        order: 2;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-motifs">
+    <div class="motif motif-1"></div>
+    <div class="motif motif-2"></div>
+    <div class="motif motif-3"></div>
+    <div class="motif motif-4"></div>
+  </div>
+
+  <header>
+    <a href="index.html" class="logo">
+      <img src="images/logo.svg" alt="Logo Fundacji BONSA" class="logo-icon">
+    </a>
+
+    <nav>
+      <a href="o-nas.html" class="nav-link">O nas</a>
+      <a href="aktualnosci.html" class="nav-link active">Aktualności</a>
+      <a href="kontakt.html" class="nav-link">Kontakt</a>
+
+      <div class="dropdown" id="menuDropdown">
+        <button class="dropdown-toggle" id="dropdownBtn">
+          ZOBACZ MENU
+          <svg width="14" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="zobacz-menu/informacje.html" class="dropdown-item">Informacje <span>→</span></a>
+          <a href="zobacz-menu/misja.html" class="dropdown-item">Misja i Statut <span>→</span></a>
+          <a href="zobacz-menu/partnerzy.html" class="dropdown-item">Partnerzy <span>→</span></a>
+          <a href="zobacz-menu/patronaty.html" class="dropdown-item">Patronaty <span>→</span></a>
+        </div>
+      </div>
+
+      <button class="btn-support" id="openModalBtn">WESPRZYJ NAS</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="section-header">
+      <div class="section-subtitle">Co u nas słychać?</div>
+      <h1 class="section-title">Wydarzenia i aktualności</h1>
+      <p class="intro-text">
+        Zobacz, jak na co dzień realizujemy naszą misję w Tychach. Organizujemy warsztaty, debaty i spotkania edukacyjne dla młodzieży.
+      </p>
+    </div>
+
+    <div class="news-list">
+      
+      <!-- ARTYKUŁ 1 -->
+      <article class="news-article">
+        <div class="news-image-wrapper">
+          <img src="images/Warsztaty „Szacunek między słowami”.jpg" alt="Warsztaty w CEZ Tychy" class="news-img">
+        </div>
+        <div class="news-content">
+          <div class="news-date">16 Września 2026</div>
+          <h2 class="news-title">Warsztaty „Szacunek między słowami”</h2>
+          <p class="news-text">
+            16 września 2026 roku w CEZ Centrum Edukacji Zawodowej w Tychach odbyły się warsztaty pt. „Szacunek między słowami”. Z dumą wspieramy takie inicjatywy - spotkanie zostało samodzielnie poprowadzone przez Zosię Zdziebko i Bartka Mamoka.
+          </p>
+          <p class="news-text">
+            Wydarzenie upłynęło pod znakiem świetnej energii, niezwykłej otwartości młodych uczestników oraz nauki uważnego słuchania. Wspólnie rozmawiali o sile wzajemnego szacunku w debacie publicznej i w codziennych relacjach międzyludzkich.
+          </p>
+        </div>
+      </article>
+
+      <!-- ARTYKUŁ 2 -->
+      <article class="news-article">
+        <div class="news-image-wrapper">
+          <img src="images/Jubileuszowe 30. spotkanie Klubu MKRSI.jpg" alt="30. Spotkanie Klubu" class="news-img">
+        </div>
+        <div class="news-content">
+          <div class="news-date">28 Sierpnia 2026</div>
+          <h2 class="news-title">Jubileuszowe 30. spotkanie Klubu MKRSI!</h2>
+          <p class="news-text">
+            Pod koniec sierpnia odbyło się jubileuszowe 30. spotkanie Młodzieżowego Klubu Rozwoju Społeczno-Intelektualnego, którego jesteśmy dumnym patronem. Wydarzenie to miało wymiar symboliczny - specjalne szkolenie dla młodzieży poprowadził Mariusz Grabowski, prezes Fundacji BONSA. Powrót do korzeni przy tej okazji był dla nas ogromnie inspirujący.
+          </p>
+          <p class="news-text">
+            Podczas prelekcji pt. „Erystyka czy retoryka? Jak nie dać się zaskoczyć w debacie” młodzi uczestnicy poznali najczęstsze chwyty erystyczne oraz odpowiednie metody reagowania na nie. Młodzież uczyła się również, jak skutecznie i elegancko radzić sobie z najtrudniejszymi pytaniami.
+          </p>
+          <p class="news-text">
+            Zdobyta wiedza została od razu przetestowana podczas autorskiej gry symulacyjnej. Uczestnicy wcielili się w role mówców w burzliwej debacie publicznej, nawiązywali koalicje i w praktyce sprawdzali swoje umiejętności merytorycznego sporu. Dziękujemy za liczne przybycie i zaangażowanie!
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-module">
+      <h2 class="cta-title">Masz pomysł na kolejne wydarzenie?</h2>
+      <p class="cta-text">
+        Fundacja Bonsa to otwarta platforma. Jeśli chcesz zorganizować z nami warsztaty lub podjąć współpracę dla tyskiej młodzieży - skontaktuj się z nami.
+      </p>
+      <div class="cta-buttons">
+        <a href="kontakt.html" class="btn-solid">Napisz do nas</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="copyright-footer">
+    &copy; 2026 Fundacja BONSA. Wszelkie prawa zastrzeżone.
+  </footer>
+
+  <!-- MODAL WESPRZYJ NAS -->
+  <div class="modal-overlay" id="supportModal">
+    <div class="modal-card">
+      <div class="modal-top-bar"></div>
+      <button class="modal-close" id="closeModalBtn" aria-label="Zamknij">&times;</button>
+
+      <div class="modal-body">
+        <div class="modal-badge">MECENAT SPOŁECZNY</div>
+        <h2 class="modal-title">Wesprzyj działania Fundacji<br>BONSA</h2>
+        <p class="modal-subtitle">100% środków przekazanych z darowizn jest przeznaczanych na cele statutowe.</p>
+
+        <div class="transfer-box">
+          <div class="transfer-row">
+            <span class="transfer-label">Bank:</span>
+            <span class="transfer-value">Nest Bank S.A.</span>
+          </div>
+          <div class="transfer-row">
+            <span class="transfer-label">Nr konta:</span>
+            <div class="transfer-value-group">
+              <span class="account-number" id="accountNumber">32 2530 0008 2100 1091 9874 0001</span>
+              <button class="btn-copy" id="copyAccountBtn">Kopiuj</button>
+            </div>
+          </div>
+          <div class="transfer-row">
+            <span class="transfer-label">Odbiorca:</span>
+            <span class="transfer-value" id="recipientName">Fundacja Bonsa, al. Bielska 128, 43-100 Tychy</span>
+          </div>
+          <div class="transfer-row">
+            <span class="transfer-label">Tytuł:</span>
+            <span class="transfer-value" id="transferTitle">Darowizna na cele statutowe</span>
+          </div>
+        </div>
+
+        <button class="btn-download" id="downloadDataBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3V16M12 16L7 11M12 16L17 11" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          POBIERZ DANE DO PRZELEWU
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const dropdown = document.getElementById('menuDropdown');
+    const dropdownBtn = document.getElementById('dropdownBtn');
+
+    dropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const supportModal = document.getElementById('supportModal');
+
+    openModalBtn.addEventListener('click', () => { supportModal.classList.add('active'); });
+    closeModalBtn.addEventListener('click', () => { supportModal.classList.remove('active'); });
+    supportModal.addEventListener('click', (e) => { if (e.target === supportModal) supportModal.classList.remove('active'); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') supportModal.classList.remove('active'); });
+
+    const copyAccountBtn = document.getElementById('copyAccountBtn');
+    const cleanAccountNumber = "32253000082100109198740001";
+
+    copyAccountBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(cleanAccountNumber);
+        copyAccountBtn.textContent = 'Skopiowano!';
+        copyAccountBtn.classList.add('copied');
+        setTimeout(() => {
+          copyAccountBtn.textContent = 'Kopiuj';
+          copyAccountBtn.classList.remove('copied');
+        }, 2200);
+      } catch (err) {
+        const tempInput = document.createElement('input');
+        tempInput.value = cleanAccountNumber;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        copyAccountBtn.textContent = 'Skopiowano!';
+        copyAccountBtn.classList.add('copied');
+        setTimeout(() => {
+          copyAccountBtn.textContent = 'Kopiuj';
+          copyAccountBtn.classList.remove('copied');
+        }, 2200);
+      }
+    });
+
+    const downloadDataBtn = document.getElementById('downloadDataBtn');
+    downloadDataBtn.addEventListener('click', () => {
+      const content = [
+        '==================================================',
+        '   DANE DO PRZELEWU - FUNDACJA BONSA',
+        '==================================================',
+        '',
+        'Bank:      Nest Bank S.A.',
+        'Nr konta:  32 2530 0008 2100 1091 9874 0001',
+        'Odbiorca:  Fundacja Bonsa, al. Bielska 128, 43-100 Tychy',
+        'Tytuł:     Darowizna na cele statutowe',
+        '',
+        '--------------------------------------------------',
+        '100% środków przekazanych z darowizn jest',
+        'przeznaczanych na cele statutowe.',
+        'Dziękujemy za Twoje wsparcie!'
+      ].join('\r\n');
+
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'dane-do-przelewu-fundacja-bonsa.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
