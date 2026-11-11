@@ -223,6 +223,8 @@
     .btn-download:hover { background: var(--gold-primary); color: #ffffff; }
     .btn-download svg { width: 20px; height: 20px; }
 
+    .mobile-menu-toggle { display: none; }
+
     /* Responsywność */
     @media (max-width: 1100px) {
       .contact-wrapper { grid-template-columns: 1fr; gap: 50px; }
@@ -239,92 +241,149 @@
         display: none;
       }
       header {
-        padding: 25px 20px;
-        flex-direction: column;
-        gap: 20px;
+        height: 60px;
+        min-height: 60px;
+        max-height: 60px;
+        padding: 0 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        background: rgba(250, 247, 240, 0.98);
+        backdrop-filter: blur(8px);
+        z-index: 1000;
+        border-bottom: 1px solid var(--border-light);
       }
       .logo {
         min-height: auto;
         min-width: auto;
-        justify-content: center;
+        height: 36px;
+        display: flex;
+        align-items: center;
       }
       .logo-icon {
-        margin-left: 0;
-        margin-top: 0;
-        transform: scale(2);
-        height: 35px;
+        height: 28px;
+        width: auto;
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        transform: none !important;
+      }
+      .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background: transparent;
+        border: 1px solid var(--border-light);
+        border-radius: 6px;
+        font-size: 22px;
+        line-height: 1;
+        color: var(--text-dark);
+        cursor: pointer;
+        padding: 0;
       }
       nav {
-        flex-direction: column;
-        gap: 14px;
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
         width: 100%;
-        text-align: center;
+        max-height: calc(100vh - 60px);
+        overflow-y: auto;
+        background: #faf7f0;
+        border-bottom: 2px solid var(--gold-primary);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        padding: 20px 20px 30px;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        z-index: 999;
+      }
+      nav.nav-open {
+        display: flex;
       }
       .nav-link {
-        font-size: 20px;
-        padding-bottom: 4px;
+        font-size: 18px;
+        padding: 8px 0;
       }
       .dropdown {
         justify-content: center;
         width: 100%;
+        text-align: center;
       }
       .dropdown-toggle {
-        font-size: 19px;
+        font-size: 16px;
         margin: 0 auto;
+        padding: 6px 0;
       }
       .dropdown-menu {
         position: static;
         width: 100%;
-        max-width: 280px;
-        margin: 10px auto 0;
+        max-width: 260px;
+        margin: 8px auto 0;
         transform: none;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-        padding: 15px 20px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        padding: 10px 15px;
       }
       .dropdown-item {
-        font-size: 16px;
-        padding: 12px 0;
+        font-size: 15px;
+        padding: 10px 0;
       }
       .btn-support {
         width: 100%;
-        max-width: 300px;
-        padding: 15px 24px;
-        font-size: 15px;
-        margin: 5px auto 0;
+        max-width: 260px;
+        padding: 11px 18px;
+        font-size: 13px;
+        letter-spacing: 1.2px;
+        margin: 8px auto 0;
       }
       main {
-        padding: 0 20px;
-        margin: 30px auto 60px;
+        padding: 0 16px;
+        margin: 20px auto 40px;
       }
       .contact-wrapper {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 25px;
       }
       .contact-info {
-        gap: 30px;
+        gap: 20px;
       }
       .section-title {
-        font-size: 34px;
+        font-size: 26px;
         line-height: 1.2;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
       }
       .section-subtitle {
-        font-size: 14px;
-        letter-spacing: 2px;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        margin-bottom: 6px;
       }
       .intro-text {
-        font-size: 16px;
+        font-size: 15px;
         line-height: 1.6;
       }
       .info-block {
-        padding: 25px 18px;
+        padding: 18px 14px;
       }
       .info-block h4 {
-        font-size: 20px;
-        margin-bottom: 15px;
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+      .info-line {
+        margin-bottom: 10px;
+      }
+      .info-label {
+        font-size: 11px;
+      }
+      .info-value {
+        font-size: 14.5px;
       }
       .contact-form-container {
-        padding: 25px 18px;
+        padding: 18px 14px;
       }
       .form-row {
         grid-template-columns: 1fr;
@@ -332,15 +391,22 @@
         margin-bottom: 0;
       }
       .form-group {
-        margin-bottom: 18px;
+        margin-bottom: 14px;
+      }
+      .form-label {
+        font-size: 13px;
+        margin-bottom: 6px;
       }
       .form-control {
-        padding: 14px 16px;
-        font-size: 15px;
+        padding: 11px 14px;
+        font-size: 14.5px;
+      }
+      textarea.form-control {
+        min-height: 120px;
       }
       .btn-submit {
-        padding: 16px;
-        font-size: 15px;
+        padding: 12px 18px;
+        font-size: 14px;
       }
       .modal-card {
         width: 94%;
@@ -348,48 +414,50 @@
         margin: 10px auto;
       }
       .modal-body {
-        padding: 30px 15px;
+        padding: 24px 14px;
       }
       .modal-title {
-        font-size: 24px;
+        font-size: 22px;
         line-height: 1.2;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
       }
       .modal-subtitle {
-        font-size: 14px;
-        margin-bottom: 20px;
+        font-size: 13px;
+        margin-bottom: 15px;
       }
       .transfer-box {
-        padding: 15px;
-        margin-bottom: 20px;
+        padding: 14px;
+        margin-bottom: 15px;
       }
       .transfer-label {
         font-size: 11px;
       }
       .transfer-value {
-        font-size: 14px;
+        font-size: 13px;
       }
       .transfer-value-group {
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
         align-items: stretch;
       }
       .account-number {
-        font-size: 13px;
+        font-size: 12.5px;
         word-break: break-all;
         text-align: center;
       }
       .btn-copy {
         width: 100%;
         text-align: center;
+        padding: 8px 12px;
+        font-size: 12px;
       }
       .btn-download {
         font-size: 13px;
-        padding: 12px;
+        padding: 11px;
       }
       .copyright-footer {
-        padding: 30px 15px;
-        font-size: 13px;
+        padding: 24px 15px;
+        font-size: 12px;
       }
     }
   </style>
@@ -408,7 +476,9 @@
       <img src="images/logo.svg" alt="Logo Fundacji BONSA" class="logo-icon">
     </a>
 
-    <nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu" type="button">☰</button>
+
+    <nav id="mainNav">
       <a href="o-nas.html" class="nav-link">O nas</a>
       <a href="aktualnosci.html" class="nav-link">Aktualności</a>
       <a href="kontakt.html" class="nav-link active">Kontakt</a>
@@ -617,6 +687,24 @@
         `;
       }
     });
+
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mainNav = document.getElementById('mainNav');
+    if (mobileMenuToggle && mainNav) {
+      mobileMenuToggle.addEventListener('click', () => {
+        const isOpen = mainNav.classList.toggle('nav-open');
+        mobileMenuToggle.textContent = isOpen ? '✕' : '☰';
+        mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('nav-open');
+          mobileMenuToggle.textContent = '☰';
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
 
     // Modal Wesprzyj Nas
     const openModalBtn = document.getElementById('openModalBtn');
