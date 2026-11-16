@@ -297,45 +297,79 @@
         background: #faf7f0;
         border-bottom: 2px solid var(--gold-primary);
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-        padding: 20px 20px 30px;
+        padding: 18px 20px 24px;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 6px;
         z-index: 999;
       }
       nav.nav-open {
         display: flex;
       }
       .nav-link {
+        font-family: 'Playfair Display', serif;
         font-size: 18px;
-        padding: 8px 0;
-      }
-      .dropdown {
-        justify-content: center;
+        padding: 5px 0;
         width: 100%;
         text-align: center;
+        color: var(--text-dark);
+        text-decoration: none;
+        border-bottom: none;
+      }
+      .nav-link.active, .nav-link:hover {
+        color: var(--gold-primary);
+        border-bottom: none;
+      }
+      .dropdown {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 0;
       }
       .dropdown-toggle {
-        font-size: 16px;
-        margin: 0 auto;
-        padding: 6px 0;
+        display: none !important;
       }
       .dropdown-menu {
-        position: static;
-        width: 100%;
-        max-width: 260px;
-        margin: 8px auto 0;
-        transform: none;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-        padding: 10px 15px;
+        position: static !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        gap: 0 !important;
       }
       .dropdown-item {
-        font-size: 15px;
-        padding: 10px 0;
+        font-family: 'Playfair Display', serif;
+        font-size: 18px;
+        color: var(--text-dark);
+        text-decoration: none;
+        padding: 5px 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: none !important;
+        display: block !important;
+        transition: color 0.2s;
+      }
+      .dropdown-item span {
+        display: none !important;
+      }
+      .dropdown-item:hover, .dropdown-item.active {
+        color: var(--gold-primary);
+        padding-left: 0;
       }
       .btn-support {
         width: 100%;
-        max-width: 260px;
+        max-width: 240px;
         padding: 11px 18px;
         font-size: 13px;
         letter-spacing: 1.2px;

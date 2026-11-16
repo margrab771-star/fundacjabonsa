@@ -317,57 +317,80 @@
         background: #faf7f0;
         border-bottom: 2px solid var(--gold-primary);
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-        padding: 20px 20px 30px;
+        padding: 18px 20px 24px;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 6px;
         z-index: 999;
       }
       nav.nav-open {
         display: flex;
       }
       .nav-link {
-        font-size: 19px;
-        padding: 6px 0;
+        font-family: 'Playfair Display', serif;
+        font-size: 18px;
+        padding: 5px 0;
         width: 100%;
         text-align: center;
+        color: var(--text-dark);
+        text-decoration: none;
+        border-bottom: none;
+      }
+      .nav-link.active, .nav-link:hover {
+        color: var(--gold-primary);
+        border-bottom: none;
       }
       .dropdown {
-        justify-content: center;
         width: 100%;
+        display: flex;
         flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 0;
       }
       .dropdown-toggle {
-        font-size: 18px;
-        margin: 0 auto;
-        padding: 6px 0;
+        display: none !important;
       }
       .dropdown-menu {
-        position: static;
-        width: 100%;
-        max-width: 300px;
-        margin: 6px auto 0;
-        transform: none;
-        box-shadow: none;
-        border: 1px solid var(--border-light);
-        border-radius: 6px;
-        padding: 8px 16px;
-        opacity: 1;
-        visibility: visible;
-        display: none;
-      }
-      .dropdown:hover .dropdown-menu,
-      .dropdown.open .dropdown-menu {
-        display: block;
+        position: static !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        gap: 0 !important;
       }
       .dropdown-item {
-        font-size: 15px;
-        padding: 9px 0;
+        font-family: 'Playfair Display', serif;
+        font-size: 18px;
+        color: var(--text-dark);
+        text-decoration: none;
+        padding: 5px 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: none !important;
+        display: block !important;
+        transition: color 0.2s;
+      }
+      .dropdown-item span {
+        display: none !important;
+      }
+      .dropdown-item:hover, .dropdown-item.active {
+        color: var(--gold-primary);
+        padding-left: 0;
       }
       .btn-support {
         width: 100%;
-        max-width: 260px;
-        padding: 12px 20px;
+        max-width: 240px;
+        padding: 11px 18px;
         font-size: 13px;
         letter-spacing: 1.2px;
         margin: 8px auto 0;
@@ -547,13 +570,30 @@
       <div class="section-subtitle">Co u nas słychać?</div>
       <h1 class="section-title">Wydarzenia i aktualności</h1>
       <p class="intro-text">
-        Zobacz, jak na co dzień realizujemy naszą misję w Tychach. Organizujemy warsztaty, debaty i spotkania edukacyjne dla młodzieży.
+        Zobacz, jak na co dzień realizujemy naszą misję. Organizujemy warsztaty, debaty i spotkania edukacyjne dla młodzieży i dorosłych.
       </p>
     </div>
 
     <div class="news-list">
       
-      <!-- ARTYKUŁ 1 -->
+      <!-- ARTYKUŁ 1 (NAJNOWSZY) -->
+      <article class="news-article">
+        <div class="news-image-wrapper">
+          <img src="images/warsztaty-architektura-przekonan.jpg" alt="Warsztaty Architektura przekonań z MRM Tychy" class="news-img">
+        </div>
+        <div class="news-content">
+          <div class="news-date">16 Listopada 2026</div>
+          <h2 class="news-title">Architektura przekonań. Dlaczego ludzki mózg wybiera iluzję w obliczu faktów?</h2>
+          <p class="news-text">
+            W warsztatach wzięli udział przedstawiciele Młodzieżowej Rady Miasta Tychy. Głównym tematem spotkania była teoria „System 1 i System 2” – psychologiczna koncepcja spopularyzowana przez laureata Nagrody Nobla, Daniela Kahnemana.
+          </p>
+          <p class="news-text">
+            Omówiliśmy, dlaczego odruchowo podejmujemy niektóre decyzje, z jakiego powodu ludzki mózg często wybiera prostotę zamiast prawdy i jak przekłada się to na nasze codzienne wybory. Poruszyliśmy również koncepcję HALT w kontekście podejmowania ważnych decyzji. Na zakończenie, uczestnicy mieli okazję wziąć udział w autorskiej grze symulacyjnej, bezpośrednio związanej z tematyką spotkania.
+          </p>
+        </div>
+      </article>
+
+      <!-- ARTYKUŁ 2 -->
       <article class="news-article">
         <div class="news-image-wrapper">
           <img src="images/Warsztaty „Szacunek między słowami”.jpg" alt="Warsztaty w CEZ Tychy" class="news-img">
